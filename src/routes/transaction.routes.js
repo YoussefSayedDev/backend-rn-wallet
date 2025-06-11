@@ -11,6 +11,9 @@ import {
 
 const router = express.Router();
 
+// Get transaction summary for a specific user
+router.get("/summary/:user_id", getTransactionSummaryByUser);
+
 // Create a new transaction
 router.post("/", createTransaction);
 
@@ -28,7 +31,5 @@ router.put("/:id", updateTransactionById);
 
 // Delete a specific transaction
 router.delete("/:id", deleteTransactionById);
-
-router.get("/summary/:user_id", getTransactionSummaryByUser);
 
 export default router;
