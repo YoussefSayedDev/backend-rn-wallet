@@ -9,6 +9,13 @@ const app = express();
 app.use(rateLimiter);
 app.use(express.json());
 
+// Cron Jobs
+import cron from "./config/cron.js";
+
+if (process.env.NODE_ENV === "production") {
+  cron.start();
+}
+
 // Routes
 import transactionRoutes from "./routes/transaction.routes.js";
 app.use("/api/transactions", transactionRoutes);
